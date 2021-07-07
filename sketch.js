@@ -3,32 +3,30 @@ var pathImg,boyImg;
 var i;
 
 function preload(){
-  pathImg = loadImage("path.png");
-  boyImg = loadAnimation("Runner-1.png","Runner-2.png");
+  //loadImage of the path
+  //loadAnimation of the boy
+ 
 }
 
 function setup(){
   
   createCanvas(400,400);
-  
-// Moving background
-path=createSprite(200,200);
-path.addImage(pathImg);
-path.velocityY = 4;
+ //create sprite for the path 
+//add image for the path
+//Make the track a moving background by giving velocity Y.
 path.scale=1.2;
 
-//creating boy running
-boy = createSprite(180,340,30,30);
+//create a boy sprite
+//add animation for the boy
 boy.scale=0.08;
-boy.addAnimation("JakeRunning",boyImg);
   
 // create left Boundary
 leftBoundary=createSprite(0,0,100,800);
-leftBoundary.visible = false;
+//set visibility as false for left boundary
 
 //create right Boundary
 rightBoundary=createSprite(410,0,100,800);
-rightBoundary.visible = false;
+//set visibility as false for left boundary
 }
 
 function draw() {
@@ -36,12 +34,10 @@ function draw() {
   path.velocityY = 4;
   
   // boy moving on Xaxis with mouse
-  boy.x = World.mouseX;
   
   edges= createEdgeSprites();
   boy.collide(edges[3]);
-  boy.collide(leftBoundary);
-  boy.collide(rightBoundary);
+  // collide the boy with the left and right invisible boundaries.
   
   //code to reset the background
   if(path.y > 400 ){
